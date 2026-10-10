@@ -1,0 +1,257 @@
+/* =============================================================
+   AI Personal Cybersecurity Guardian — Design System
+   Deep navy dark-mode SOC aesthetic
+   ============================================================= */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* --- Design Tokens --- */
+:root {
+  /* Color palette */
+  --color-bg:           #080d1a;
+  --color-bg-elevated:  #0d1426;
+  --color-surface:      #111827;
+  --color-surface-2:    #1a2235;
+  --color-border:       rgba(255, 255, 255, 0.06);
+  --color-border-focus: rgba(0, 212, 255, 0.4);
+
+  --color-cyan:         #00d4ff;
+  --color-cyan-dim:     rgba(0, 212, 255, 0.15);
+  --color-cyan-glow:    rgba(0, 212, 255, 0.06);
+  --color-purple:       #7c3aed;
+  --color-purple-dim:   rgba(124, 58, 237, 0.15);
+
+  /* Risk tier colors */
+  --color-safe:         #00e676;
+  --color-safe-dim:     rgba(0, 230, 118, 0.12);
+  --color-warning:      #ffb020;
+  --color-warning-dim:  rgba(255, 176, 32, 0.12);
+  --color-danger:       #ff6b2b;
+  --color-danger-dim:   rgba(255, 107, 43, 0.12);
+  --color-critical:     #ff2d55;
+  --color-critical-dim: rgba(255, 45, 85, 0.12);
+
+  /* Text */
+  --color-text-primary:   rgba(255, 255, 255, 0.95);
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-muted:     rgba(255, 255, 255, 0.35);
+  --color-text-accent:    #00d4ff;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Border radius */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:   0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg:   0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow-cyan:     0 0 20px rgba(0, 212, 255, 0.15);
+  --shadow-glow-critical: 0 0 20px rgba(255, 45, 85, 0.2);
+  --shadow-glow-safe:     0 0 20px rgba(0, 230, 118, 0.15);
+
+  /* Blur */
+  --blur-sm: blur(8px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --transition-fast:   150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow:   400ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Sidebar */
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 64px;
+  --topbar-height: 60px;
+}
+
+/* --- Base Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* --- Background System --- */
+.cyber-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cyber-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(0, 212, 255, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(124, 58, 237, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(0, 10, 30, 0.3) 0%, transparent 100%);
+}
+
+.cyber-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* --- Glass Card --- */
+.glass-card {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: var(--blur-md);
+  -webkit-backdrop-filter: var(--blur-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.glass-card-hover {
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.15);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+}
+
+.text-xs  { font-size: 0.75rem; }
+.text-sm  { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg  { font-size: 1.125rem; }
+.text-xl  { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+.text-3xl { font-size: 1.875rem; }
+.text-4xl { font-size: 2.25rem; }
+.text-5xl { font-size: 3rem; }
+
+.font-normal   { font-weight: 400; }
+.font-medium   { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold     { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+.text-primary   { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted     { color: var(--color-text-muted); }
+.text-accent    { color: var(--color-text-accent); }
+.text-safe      { color: var(--color-safe); }
+.text-warning   { color: var(--color-warning); }
+.text-danger    { color: var(--color-danger); }
+.text-critical  { color: var(--color-critical); }
+
+/* --- Glow Text --- */
+.glow-cyan {
+  color: var(--color-cyan);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+}
+
+/* --- Layout Utilities --- */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.items-start { align-items: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
+.gap-1 { gap: var(--space-1); }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+.flex-1 { flex: 1; }
+.flex-shrink-0 { flex-shrink: 0; }
+.w-full { width: 100%; }
+.min-w-0 { min-width: 0; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.overflow-hidden { overflow: hidden; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rounded-full { border-radius: var(--radius-full); }
+.opacity-0 { opacity: 0; }
+.pointer-events-none { pointer-events: none; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* --- Focus Ring --- */
+:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(0, 212, 255, 0.2);
+  color: var(--color-text-primary);
+}
+
+/* --- Divider --- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+}

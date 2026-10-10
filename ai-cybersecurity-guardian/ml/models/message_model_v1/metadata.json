@@ -1,0 +1,30 @@
+{
+  "model_version": "message-v1",
+  "model_type": "TfidfVectorizer + LogisticRegression",
+  "feature_schema_version": "v1",
+  "model_sha256": "695c63ecd121e3bebcbf24f1efabd07befda1536323ac5117ea47bea6340929e",
+  "classification_threshold": 0.5,
+  "random_seed": 42,
+  "dataset_path": "synthetic_messages.csv",
+  "dataset_version": "synthetic-fixture-v1",
+  "dataset_size": 40,
+  "train_size": 30,
+  "test_size": 10,
+  "training_note": "NON-PRODUCTION: Synthetic fixture dataset for M7 message ML pipeline demonstration. Synthetic dataset \u2014 not production representative. Metrics reflect deterministic fixture data. Replace with real-world corpus for production.",
+  "test_accuracy": 0.9,
+  "test_precision": 0.8333333333333334,
+  "test_recall": 1.0,
+  "test_f1": 0.9090909090909091,
+  "test_confusion_matrix": [
+    [
+      4,
+      1
+    ],
+    [
+      0,
+      5
+    ]
+  ],
+  "vocabulary_size": 500,
+  "training_date": "2026-09-10T18:05:23.256558+00:00"
+}
